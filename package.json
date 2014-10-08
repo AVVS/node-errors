@@ -1,0 +1,33 @@
+{
+  "name": "node-errors",
+  "version": "0.1.0",
+  "description": "Extended Node.JS Error classes, allowing you to easily handle common errors in a web application. Predefined error messages and codes will save you some time and boilerplate code",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AVVS/node-errors.git"
+  },
+  "keywords": [
+    "error",
+    "error",
+    "handling",
+    "http",
+    "error",
+    "handling",
+    "express.js",
+    "errors",
+    "error handling middleware"
+  ],
+  "author": "Vitaly Aminev <v@aminev.me>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AVVS/node-errors/issues"
+  },
+  "homepage": "https://github.com/AVVS/node-errors",
+  "dependencies": {
+    "debug": "^2.0.0"
+  }
+}
