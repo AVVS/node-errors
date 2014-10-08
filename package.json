@@ -1,5 +1,5 @@
 {
-  "name": "node-errors",
+  "name": "node-common-errors",
   "version": "0.1.0",
   "description": "Extended Node.JS Error classes, allowing you to easily handle common errors in a web application. Predefined error messages and codes will save you some time and boilerplate code",
   "main": "index.js",

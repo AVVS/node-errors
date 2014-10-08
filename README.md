@@ -24,7 +24,7 @@ Internal      | Internal Server Error | 500     | null           | `message`
 One of the many usage cases
 
 ```js
-var Errors = require('node-errors');
+var Errors = require('node-common-errors');
 var express = require('express');
 var app = express();
 
