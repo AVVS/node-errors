@@ -14,7 +14,7 @@ function CommonError(message, code) {
 
   this.name = this.constructor.name;
   this.message = message;
-  this.code = code || 400;
+  this.statusCode = this.code = code || 400;
 
   return this;
 }
@@ -94,7 +94,7 @@ util.inherits(InternalError, CommonError);
  * @param {Object}   res  - http response
  * @param {Function} next - next
  */
-function commonErrorHandler(err, req, res, next) {
+function commonErrorHandler(err, req, res, next) { // jshint ignore:line
 
   debug(err);
 
