@@ -2,6 +2,7 @@
 
 var util = require('util');
 var debug = require('debug')('node-errors');
+var stringify = require('json-stringify-safe');
 
 /**
  * Common error with message and custom code
@@ -20,6 +21,19 @@ function CommonError(message, code) {
 }
 util.inherits(CommonError, Error);
 
+/**
+ * Enables Error object to be serialized
+ * @return {Object}
+ */
+CommonError.prototype.toJSON = function () {
+  var alt = {};
+
+  Object.getOwnPropertyNames(this).forEach(function (key) {
+      alt[key] = this[key];
+  }, this);
+
+  return alt;
+};
 
 /**
  * Authentication Error
@@ -105,17 +119,12 @@ function commonErrorHandler(err, req, res, next) { // jshint ignore:line
 
   // here we've got an error, it could be a different one than
   // the one we've constructed, so provide defaults to be safe
-  var response = {};
-  response.message = err.message || 'Internal Server Error';
+  err.message = err.message || 'Internal Server Error';
 
-  // possible additional payload, for instance when we need to process
-  // payload on the client
-  if (err.data) {
-    response.data = err.data;
-  }
-
-  res.status(err.code || 500).json(response);
-
+  res
+    .status(err.code || err.statusCode || 500)
+    .type('application/json')
+    .send(stringify(err));
 }
 
 /**
