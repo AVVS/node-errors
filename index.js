@@ -25,15 +25,18 @@ util.inherits(CommonError, Error);
  * Enables Error object to be serialized
  * @return {Object}
  */
-CommonError.prototype.toJSON = function () {
-  var alt = {};
+Object.defineProperty(CommonError.prototype, 'toJSON', {
+    value: function () {
+        var alt = {};
 
-  Object.getOwnPropertyNames(this).forEach(function (key) {
-      alt[key] = this[key];
-  }, this);
+        Object.getOwnPropertyNames(this).forEach(function (key) {
+            alt[key] = this[key];
+        }, this);
 
-  return alt;
-};
+        return alt;
+    },
+    configurable: true
+});
 
 /**
  * Authentication Error
